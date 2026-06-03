@@ -1,9 +1,9 @@
-FROM ubuntu:24.04 AS cargobuild
+FROM ubuntu:26.04 AS cargobuild
 ONBUILD ARG TARGETARCH
 ONBUILD ENV TARGETARCH=$TARGETARCH
 ENV DEBIAN_FRONTEND=noninteractive
 USER root
-COPY apt_proxy_configure.sh apt_proxy_clean.sh /usr/local/sbin
+COPY apt_proxy_configure.sh apt_proxy_clean.sh /usr/local/sbin/
 ONBUILD RUN bash /usr/local/sbin/apt_proxy_configure.sh
 RUN <<EOF
 /usr/local/sbin/apt_proxy_configure.sh
